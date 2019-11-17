@@ -1,0 +1,117 @@
+body{
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.24), 0px 0px 4px rgba(0, 0, 0, 0.12);
+}
+
+.menu__left{
+    display: flex;
+    width: 200px;
+    cursor: pointer;
+}
+
+.menu__tittle{
+    font-size: 20px;
+    margin: 0 0 0 20px;
+}
+
+.menu__right{
+    cursor: pointer;
+}
+
+
+
+main{
+    display: flex;
+    justify-content: space-between;
+    padding: 60px;
+}
+
+.main__menu{
+    display: flex;
+    flex-direction: column;
+}
+
+.main__menu-items{
+    list-style: none;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.24);
+    padding: 20px;
+    margin: 0;
+}
+
+aside + aside{
+    margin-top: 20px;
+}
+
+.main__menu-item{
+    display: flex;
+    align-items: center;
+}
+
+.main__menu-item p{
+    margin-left: 20px;
+}
+
+.main__menu-item img{
+    cursor: pointer;
+}
+
+.main__menu-item div{
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+}
+
+.main__menu-color-1{
+    background-color: #C4C4C4;
+}
+
+.main__menu-color-1 input[type="color"]{
+    cursor: pointer;
+    opacity: 0;
+	display: block;
+	width: 12px;
+	height: 15px;
+	border: none;
+}
+
+.main__menu-color-2{
+    background-color: #41F795;
+    cursor: pointer;
+}
+.main__menu-color-3{
+    background-color: #F74141;
+    cursor: pointer;
+}
+.main__menu-color-4{
+    background-color: #41B6F7;
+    cursor: pointer;
+}
+
+
+.main__select{
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.24);
+    height: 150px;
+}
+
+.main__select-list{
+    list-style: none;
+    padding: 20px;
+    margin: 0;
+}
+
+.main__select-option{
+    padding-top: 10px;;
+}
+
+#main__canvas{
+    border: 1px solid #C4C4C4;
+    margin-right: 200px;
+}

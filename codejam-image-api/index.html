@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Canvas</title>
+    <link rel="stylesheet" href="css/index.css">
+    <script src="js/index.js"></script>
+</head>
+<body>
+    <header>
+        <div class="menu__left">
+            <img src="icons/menu.svg" alt="">
+            <h1 class="menu__tittle">Codejam Pallete</h1>
+        </div>
+        <div class="menu__right">
+            <img src="icons/menu_m.svg" alt="">
+        </div>
+    </header>
+    <main>
+        <div class="main__menu">
+            <aside>
+                <ul class="main__menu-items">
+                    <li class="main__menu-item tool">
+                        <img src="icons/Paint-bucket.svg" alt="" id="bucket">
+                        <p>Paint-bucket</p>
+                    </li>
+                    <li class="main__menu-item tool" >
+                        <img src="icons/Color-picker.svg" alt="" id="color-picker">
+                        <p>Choose color</p>
+                    </li>
+                    <li class="main__menu-item tool">
+                        <img src="icons/pencil.svg" alt="" id="pencil">
+                        <p>Pencil</p>
+                    </li>
+                    
+                </ul>
+            </aside>
+            <aside>
+                <ul class="main__menu-items">
+                    <li class="main__menu-item">
+                        <div class="main__menu-color-1" id="current">
+                            <input type="color" id="change-color" value="#C4C4C4">
+                        </div>
+                        <p>Current color</p>
+                    </li>
+                    <li class="main__menu-item">
+                        <div class="main__menu-color-2" id="previous"></div>
+                        <p>Previous color</p>
+                    </li>
+                    <li class="main__menu-item">
+                        <div class="main__menu-color-3" id="red"></div>
+                        <p>Red</p>
+                    </li>
+                    <li class="main__menu-item">
+                        <div class="main__menu-color-4" id="blue"></div>
+                        <p>Blue</p>
+                    </li>
+                </ul>
+            </aside>
+        </div>
+        <canvas id="main__canvas" width="512" height="512">
+
+        </canvas>
+    </main>
+</body>
+</html>
