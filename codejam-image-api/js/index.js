@@ -120,6 +120,8 @@ const selectTool = (tool) => {
 };
 
 const initCanvas = () => {
+    
+
     const tools = document.querySelectorAll('.tool');
     setCurrentColor();
 
