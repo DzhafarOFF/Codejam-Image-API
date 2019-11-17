@@ -34,9 +34,9 @@ const setCurrentColor = (color = null) => {
     }
 };
 
-const selectTool = (tool) => {
+const selectTool = (tool, size = 4) => {
     let isBucket = false;
-    let isPencil = false;
+    let isPencil = true;
     let isColorPicker = false;
     const setEventBucket = () => {
         if (!isBucket) return;
@@ -60,8 +60,8 @@ const selectTool = (tool) => {
         const draw = (e) => {
             if (!isDrawing) return;
             drawArea.fillStyle = getCurrentColor();
-            drawArea.fillRect(Math.floor(e.offsetX / 128) * 128,
-                Math.floor(e.offsetY / 128) * 128, 128, 128);
+            drawArea.fillRect(Math.floor(e.offsetX / (512 / size)) * (512 / size),
+                Math.floor(e.offsetY / (512 / size)) * (512 / size), (512 / size), (512 / size));
         };
 
         canvas.onmousedown = (e) => {
@@ -106,7 +106,7 @@ const selectTool = (tool) => {
             isBucket = false;
             isPencil = true;
             isColorPicker = false;
-            setEventPencil();
+            setEventPencil(size);
             break;
         case 'color-picker':
             isBucket = false;
@@ -117,17 +117,55 @@ const selectTool = (tool) => {
         default:
             break;
     }
+    setEventPencil();
 };
 
-const initCanvas = () => {
-    
+const initCanvas = (size) => {
+    const radios = document.forms.form.elements.size;
+    for (let i = 0; i < radios.length; i += 1) {
+        radios[i].onclick = function () {
+            initCanvas(this.value);
+        };
+    }
+
+    const drawImage = (url) => {
+        const canvas = document.getElementById('main__canvas');
+        const drawArea = canvas.getContext('2d');
+
+        const baseImage = new Image();
+        baseImage.src = url;
+        baseImage.onload = function () {
+            drawArea.clearRect(0, 0, canvas.width, canvas.height);
+            drawArea.drawImage(baseImage, 0, 0);
+        };
+    };
+
+    function getLinkToImage(city) {
+        const url = `https://api.unsplash.com/photos/random?query=town,${city}&client_id=dd35ccb577f7a4c040a24ecc3709702b42092274a026d730be774e16ff38e6e7`;
+        fetch(url)
+            .then((res) => res.json())
+            .then((data) => {
+                drawImage(data.urls.small);
+            });
+    }
+
+    const input = document.getElementById('city');
+    document.forms.form.onsubmit = (e) => e.preventDefault();
+
+    input.onkeypress = (event) => ((event.keyCode > 64 && event.keyCode < 91)
+        || (event.keyCode > 96 && event.keyCode < 123) || event.keyCode === 8);
+
+    input.onkeydown = (e) => {
+        if (e.keyCode === 13) {
+            getLinkToImage(input.value);
+        }
+    };
 
     const tools = document.querySelectorAll('.tool');
     setCurrentColor();
-
     for (let i = 0; i < tools.length; i += 1) {
         tools[i].onclick = (e) => {
-            selectTool(e.target);
+            selectTool(e.target, size);
         };
     }
 
