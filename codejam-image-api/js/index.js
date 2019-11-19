@@ -120,14 +120,16 @@ const selectTool = (tool, size = 4) => {
     setEventPencil();
 };
 
+let initCounter = 0;
+
 const initCanvas = (size) => {
     const radios = document.forms.form.elements.size;
     for (let i = 0; i < radios.length; i += 1) {
-        radios[i].onclick = function () {
+        radios[i].onchange = function () {
             initCanvas(this.value);
+            selectTool('pencil', this.value);
         };
     }
-
     const drawImage = (url) => {
         const canvas = document.getElementById('main__canvas');
         const drawArea = canvas.getContext('2d');
@@ -177,6 +179,11 @@ const initCanvas = (size) => {
 
     red.onmousedown = () => setCurrentColor('rgb(247, 65, 65)');
     blue.onmousedown = () => setCurrentColor('rgb(65, 182, 247)');
+
+    if (!initCounter) {
+        document.getElementById('start').click();
+        initCounter += 1;
+    }
 };
 
 window.addEventListener('load', initCanvas);
