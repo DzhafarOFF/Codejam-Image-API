@@ -150,6 +150,7 @@ const initCanvas = (size) => {
     }
 
     const input = document.getElementById('city');
+    const findBtn = document.getElementById('find');
     document.forms.form.onsubmit = (e) => e.preventDefault();
 
     input.onkeypress = (event) => ((event.keyCode > 64 && event.keyCode < 91)
@@ -160,6 +161,8 @@ const initCanvas = (size) => {
             getLinkToImage(input.value);
         }
     };
+
+    findBtn.onclick = () => getLinkToImage(input.value);
 
     const tools = document.querySelectorAll('.tool');
     setCurrentColor();
