@@ -41,7 +41,7 @@ const selectTool = (tool, size = 4) => {
     const setEventBucket = () => {
         if (!isBucket) return;
         const canvas = document.getElementById('main__canvas');
-        canvas.style.cursor = 'url(icons/Paint-bucket.svg) 2 2, pointer';
+        canvas.style.cursor = 'url(./../icons/Paint-bucket.svg) 2 2, pointer';
         canvas.onmousedown = () => {
             const drawArea = canvas.getContext('2d');
             drawArea.fillStyle = getCurrentColor();
@@ -54,7 +54,7 @@ const selectTool = (tool, size = 4) => {
     const setEventPencil = () => {
         if (!isPencil) return;
         const canvas = document.getElementById('main__canvas');
-        canvas.style.cursor = 'url(icons/pencil.svg) 2 2, pointer';
+        canvas.style.cursor = 'url(./../icons/pencil.svg) 2 2, pointer';
         const drawArea = canvas.getContext('2d');
         let isDrawing = false;
         const draw = (e) => {
@@ -82,7 +82,7 @@ const selectTool = (tool, size = 4) => {
         if (!isColorPicker) return;
         const canvas = document.getElementById('main__canvas');
         const area = canvas.getContext('2d');
-        canvas.style.cursor = 'url(icons/Color-picker.svg) 2 2, pointer';
+        canvas.style.cursor = 'url(./../icons/Color-picker.svg) 2 2, pointer';
         const setColor = (eColor) => {
             const color = area.getImageData(eColor.offsetX, eColor.offsetY, 1, 1).data;
             const colorRGB = `rgb(${color[0]}, ${color[1]}, ${color[2]})`;
